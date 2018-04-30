@@ -1,0 +1,43 @@
+リポジトリをローカルにクローン
+git clone git@github.com: [tsutarou10] / [リポジトリ名].git
+
+ファイルを追加
+git add ファイル名
+
+ファイルを削除
+git rm -r ファイル名
+
+コミットする内容を確認
+git status
+
+コミットする
+git commit -m "message"
+(オプションの-aはこれまでに修正したものを全てコミット)
+
+githubへプッシュする
+git push origin 作業ブランチ名:master
+
+ローカル環境を最新にする
+git pull
+
+ローカルに取り込む
+git fetch
+
+作業ブランチの削除
+git branch -d ブランチ名
+
+ブランチの作成
+git branch ブランチ名
+
+ブランチの変更
+git checkout ブランチ名
+
+git reset "[commit id]" 
+[commit]の後にすべてのコミットを元に戻し、ローカルに変更を保存します
+
+
+git remote add origin git@github.com:tsutarou10/sample.git（BabaShunの部分は自分のユーザー名に変更してください）
+
+===
+pushでエラーが出た時
+git pull origin master
