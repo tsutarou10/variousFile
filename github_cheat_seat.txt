@@ -41,3 +41,12 @@ git remote add origin git@github.com:tsutarou10/sample.git（BabaShunの部分�
 ===
 pushでエラーが出た時
 git pull origin master
+
+git branch [branch name]
+git checkout [branch name]
+git add .
+git commit -m "message!"
+git push origin [branchname]
+
+git checkout master
+git merge tat
