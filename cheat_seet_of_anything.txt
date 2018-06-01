@@ -1,0 +1,7 @@
+export 環境変数=環境変数の中身
+printenv 環境変数 : 環境変数を参照 (print environment variable?)
+unset 環境変数 : 環境変数を削除
+$PATH : コマンド検索パスを保存 (シェルがコマンドを検索するためのパス)
+export PATH="$PATH:追加したいパス" : PATHは":"で区切られている
+
+
