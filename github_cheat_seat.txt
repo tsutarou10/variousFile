@@ -36,8 +36,9 @@ git reset "[commit id]"
 [commit]の後にすべてのコミットを元に戻し、ローカルに変更を保存します
 
 
-git remote add origin git@github.com:tsutarou10/sample.git（BabaShunの部分は自分のユーザー名に変更してください）
+git remote add origin git@github.com:tsutarou10/sample.git
 
+git checkout <filename>
 ===
 pushでエラーが出た時
 git pull origin master
