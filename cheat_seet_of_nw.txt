@@ -1,0 +1,5 @@
+ping アドレス
+ifconfig : en0(Ethernet0) : 自分のマシンのIPアドレスとMACアドレスが書かれている MACアドレス -> ether, IPアドレス -> inet
+netstat -rn : ルーティングテーブル表示
+nslookup url : IPアドレスが帰ってくる (名前解決)
+traceroute アドレス : 経由を表示
