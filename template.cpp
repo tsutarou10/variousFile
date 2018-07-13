@@ -9,6 +9,7 @@
 #include <stack>
 #include <queue>
 #include <set>
+#include <cstring>
 
 using namespace std;
 #define vsort(v) sort(v.begin(), v.end());
