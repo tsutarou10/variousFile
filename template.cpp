@@ -12,9 +12,20 @@
 #include <cstring>
 
 using namespace std;
-#define vsort(v) sort(v.begin(), v.end());
-#define vunique(v) unique(v.begin(), v.end());
-#define INF 2000000000
+// ascending order
+#define vsort(v) sort(v.begin(), v.end())
+// descending order
+#define vsort_r(v) sort(v.begin(), v.end(), greater<int>())
+// ascending order
+#define asort(array, N) sort(array, array + N)
+// descending order
+#define asort_r(array, N) sort(array, array + N, greater<int>())
+#define vunique(v) v.erase(unique(v.begin(), v.end()), v.end())
+#define mp make_pair
+#define ts(x) to_string(x)
+typedef long long ll;
+typedef pair<int, int> P;
+const ll INF = 1e18;
 
 int main(){
 	cin.tie(0);
