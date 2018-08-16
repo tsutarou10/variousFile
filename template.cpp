@@ -22,6 +22,7 @@ using namespace std;
 #define rep(i, a, b) for(int i = (int)a; i < (int)b; i++)
 #define repm(i, a, b) for(int i = (int)a; i > (int)b; i--)
 #define bit(a) bitset<8>(a)
+#define des_priority_queue priority_queue<int, vector<int>, greater<int> >
 typedef long long ll;
 typedef pair<int, int> P;
 const ll INF = 1e18;
