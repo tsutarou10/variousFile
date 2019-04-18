@@ -82,6 +82,7 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 "----------------------------------------------------------
 "ここに追加したいVimプラグインを記述する・・・・・・②
+    NeoBundle 'scrooloose/nerdtree'
     NeoBundleFetch 'Shougo/neobundle.vim'
     NeoBundle 'plasticboy/vim-markdown'
     NeoBundle 'kannokanno/previm'
@@ -92,6 +93,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
     NeoBundle 'vim-jp/cpp-vim'
     NeoBundle 'itchyny/lightline.vim'
     NeoBundle 'bronson/vim-trailing-whitespace'
+    NeoBundle 'ConradIrwin/vim-bracketed-paste'
     NeoBundle 'Yggdroot/indentLine'
     NeoBundle 'ctrlpvim/ctrlp.vim' " 多機能セレクタ
     NeoBundle 'tacahiroy/ctrlp-funky' " CtrlPの拡張プラグイン、関数検索
@@ -105,6 +107,15 @@ NeoBundleFetch 'Shougo/neobundle.vim'
         NeoBundle 'Shougo/neosnippet'
         NeoBundle 'Shougo/neosnippet-snippets'
     endif
+
+    set nocompatible
+    filetype off
+    if has('vim_starting')
+        set runtimepath+=~/.vim/bundle/neobundle.vim
+    endif
+
+
+    filetype plugin indent on
 
     " ==================
     " CtrP設定
@@ -175,7 +186,7 @@ NeoBundleCheck
 " =================
 " molokaiの設定
 " ================
-syntax enable
+syntax on
 hi PmenuSel cterm=reverse ctermfg=33 ctermbg=222 gui=reverse guifg=#3399ff guibg=#f0e68c
 set t_Co=256
 
@@ -208,3 +219,32 @@ augroup MyXML
 augroup END
 set nobackup
 set noswapfile
+" texのconcealを無効化
+let g:tex_conceal=''
+""" markdown {{{
+    autocmd BufRead,BufNewFile *.mkd  set filetype=markdown
+    autocmd BufRead,BufNewFile *.md  set filetype=markdown
+    " Need: kannokanno/previm
+    nnoremap <silent> <C-a> :PrevimOpen<CR>
+    " Ctrl-pでプレビュー
+    " 自動で折りたたまないようにする
+    let g:vim_markdown_folding_disabled=1
+" }}}
+
+if &term =~ "xterm"
+    let &t_ti .= "\e[?2004h"
+    let &t_te .= "\e[?2004l"
+    let &pastetoggle = "\e[201~"
+
+    function XTermPasteBegin(ret)
+        set paste
+        return a:ret
+    endfunction
+
+    noremap <special> <expr> <Esc>[200~ XTermPasteBegin("0i")
+    inoremap <special> <expr> <Esc>[200~ XTermPasteBegin("")
+    cnoremap <special> <Esc>[200~ <nop>
+    cnoremap <special> <Esc>[201~ <nop>
+endif
+
+nnoremap <silent><C-e> :NERDTreeToggle<CR>
