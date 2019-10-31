@@ -2,7 +2,7 @@ set encoding=utf-8
 scriptencoding utf-8
 set fileencoding=utf-8 " 保存時の文字コード
 set fileencodings=ucs-boms,utf-8,euc-jp,cp932 " 読み込み時の文字コードの自動判別、左側が優先
-set fileformats=mac,unix,dos " 改行コードの自動判別
+set fileformats=unix,mac,dos " 改行コードの自動判別
 set ambiwidth=double "四角や丸文字が崩れる問題を解決
 set expandtab " タブ入力を複数の空白入力に置き換える
 set tabstop=4
@@ -15,6 +15,8 @@ set incsearch " 1文字入力ごとに検索
 set ignorecase " 検索パターンに大文字小文字を区別しない
 set smartcase " 検索パターンに大文字を含んでいたら大文字小文字を区別
 set hlsearch
+set splitbelow
+set termwinsize=7x0
 " ESCキー2度押しでハイライトの切り替え
 nnoremap <silent><Esc><Esc> :<C-u>set nohlsearch!<CR>
 
@@ -30,7 +32,7 @@ nnoremap <up> gk
 set backspace=indent,eol,start
 
 set showmatch " 括弧の対応関係を一瞬表示する
-" source $VIMRUNTIME/macros/matchit.vim " Vimの「%」を拡張する
+source $VIMRUNTIME/macros/matchit.vim " Vimの「%」を拡張する
 
 " コマンドモードの補完
 set wildmenu
@@ -100,6 +102,12 @@ NeoBundleFetch 'Shougo/neobundle.vim'
     NeoBundle 'suy/vim-ctrlp-commandline' " CtrlPの拡張プラグイン、コマンド履歴検索
     NeoBundle 'rking/ag.vim'
     "NeoBundle 'scrooloose/syntastic' " 構文エラーチェック
+    NeoBundle 'itchyny/lightline.vim'
+    " Dart
+    NeoBundle 'dart-lang/dart-vim-plugin'
+    NeoBundle 'ayu-theme/ayu-vim'
+    NeoBundle 'elzr/vim-json'
+    let g:vim_json_syntax_conceal = 0
 "----------------------------------------------------------
 
     if has('lua')
@@ -152,26 +160,30 @@ NeoBundleFetch 'Shougo/neobundle.vim'
     " ==================
     " neocomplete neosnippetの設定
     " ==================
-    if neobundle#is_installed('neocomplete.vim')
-        " vim起動時にneocompleteを有効にする
-        let g:neocomplete#enable_at_startup = 1
-        " smartcase有効化、大文字が入力されるまで大文字小文字の区別を無視する
-        let g:neocomplete#enable_smart_case = 1
-        " 3文字以上の単語に対して補完を有効にする
-        let g:neocomplete#min_keyword_length = 3
-        " 区切り文字まで補完する
-        let g:neocomplete#enable_auto_delimiter = 1
-        " 1文字目の入力から補完のポップアップを表示
-        let g:neocomplete#auto_completion_start_length = 1
-        " バックスペースで補完のポップアップを閉じる
-        inoremap <expr><BS> neocomplete#smart_close_popup()."<C-h>"
+    "if neobundle#is_installed('neocomplete.vim')
+    "    " vim起動時にneocompleteを有効にする
+    "    let g:neocomplete#enable_at_startup = 1
+    "    " smartcase有効化、大文字が入力されるまで大文字小文字の区別を無視する
+    "    let g:neocomplete#enable_smart_case = 1
+    "    " 3文字以上の単語に対して補完を有効にする
+    "    let g:neocomplete#min_keyword_length = 3
+    "    " 区切り文字まで補完する
+    "    let g:neocomplete#enable_auto_delimiter = 1
+    "    " 1文字目の入力から補完のポップアップを表示
+    "    let g:neocomplete#auto_completion_start_length = 1
+    "    " バックスペースで補完のポップアップを閉じる
+    "    inoremap <expr><BS> neocomplete#smart_close_popup()."<C-h>"
 
-        " エンターキーで補完候補の確定、スニペットの展開もエンターキーで確定
-        imap <expr><CR> neosnippet#expandable() ? "<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "<C-y>" : "<CR>"
-        " タブキーで補完候補の選択. スニペット内のジャンプもタブキーでジャンプ・・・・・・③
-        imap <expr><TAB> pumvisible() ? "<C-n>" : neosnippet#jumpable() ? "<Plug>(neosnippet_expand_or_jump)" : "<TAB>"
-     endif
+    "    " エンターキーで補完候補の確定、スニペットの展開もエンターキーで確定
+    "    imap <expr><CR> neosnippet#expandable() ? "<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "<C-y>" : "<CR>"
+    "    " タブキーで補完候補の選択. スニペット内のジャンプもタブキーでジャンプ・・・・・・③
+    "    imap <expr><TAB> pumvisible() ? "<C-n>" : neosnippet#jumpable() ? "<Plug>(neosnippet_expand_or_jump)" : "<TAB>"
+    " endif
 
+    set laststatus=2
+    set showmode
+    set showcmd
+    set ruler
 
 
 
@@ -182,7 +194,7 @@ filetype plugin indent on
 "未インストールのVimプラグインがある場合、インストールするかどうかを尋ねてくれるようにする設定・・・・・・③
 NeoBundleCheck
 
-" set term=xterm-256color
+ set term=xterm-256color
 " =================
 " molokaiの設定
 " ================
@@ -192,7 +204,10 @@ set t_Co=256
 
 if neobundle#is_installed('molokai')
     set background=dark
-    colorscheme molokai
+    set termguicolors
+    let ayucolor="dark"
+    colorscheme ayu
+     "colorscheme molokai
     " colorscheme solarized
     " colorscheme molokai
     " colorscheme tender
@@ -225,26 +240,48 @@ let g:tex_conceal=''
     autocmd BufRead,BufNewFile *.mkd  set filetype=markdown
     autocmd BufRead,BufNewFile *.md  set filetype=markdown
     " Need: kannokanno/previm
-    nnoremap <silent> <C-a> :PrevimOpen<CR>
     " Ctrl-pでプレビュー
     " 自動で折りたたまないようにする
     let g:vim_markdown_folding_disabled=1
 " }}}
 
-if &term =~ "xterm"
-    let &t_ti .= "\e[?2004h"
-    let &t_te .= "\e[?2004l"
-    let &pastetoggle = "\e[201~"
-
-    function XTermPasteBegin(ret)
-        set paste
-        return a:ret
-    endfunction
-
-    noremap <special> <expr> <Esc>[200~ XTermPasteBegin("0i")
-    inoremap <special> <expr> <Esc>[200~ XTermPasteBegin("")
-    cnoremap <special> <Esc>[200~ <nop>
-    cnoremap <special> <Esc>[201~ <nop>
-endif
 
 nnoremap <silent><C-e> :NERDTreeToggle<CR>
+
+function! CreateBufnr2tabnrDict() abort
+  let bufnr2tabnr_dict = {}
+  for tnr in range(1, tabpagenr('$'))
+    for bnr in tabpagebuflist(tnr)
+      let bufnr2tabnr_dict[bnr] = has_key(bufnr2tabnr_dict, bnr) ? add(bufnr2tabnr_dict[bnr], tnr) : [tnr]
+    endfor
+  endfor
+  for val in values(bufnr2tabnr_dict)
+    call uniq(sort(val))
+  endfor
+  return bufnr2tabnr_dict
+endfunction
+
+function! Bufnr2tabnr(bnr) abort
+  return CreateBufnr2tabnrDict()[a:bnr]
+endfunction
+
+function! ExitTerm()
+    if !empty(term_list())
+        let term_tabnr = Bufnr2tabnr(term_list()[0])
+        let num_win_in_tabnr = tabpagewinnr(term_tabnr[0], '$')
+        if num_win_in_tabnr == 1
+            call term_sendkeys(term_list()[0], "exit\<CR>")
+        endif
+    endif
+endfunction
+
+augroup term-exit
+  autocmd!
+  autocmd BufEnter * call ExitTerm()
+augroup END
+let g:vim_markdown_conceal = 0
+au BufNewFile,BufRead *.dart :set filetype=dart
+if has('persistent_undo')
+  set undodir=~/.vim/undo
+  set undofile
+endif
