@@ -8,3 +8,11 @@ Amazon SES (Simple Email Service) is a service provided by Amazon that can send 
 
 ## Amazon DocumentDB
 Amazon DocumentDB is a full managed document database service that is scarable and high available.
+This service can be recieved schemaless JSON.
+
+### Usecase Example
+- user profile (It is often different by each user to save data.)
+- Product data on EC site
+
+### DynamoDB vs DocumentDB
+DynamoDB is higher scarable than DocumentDB is. However superiority of DocumentDB is that you can flexibily query. So it is convinience when there is multiple accsess petern.
