@@ -71,11 +71,19 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " =============== NeoBundle start ====================="
     NeoBundle 'scrooloose/nerdtree'
     NeoBundle 'tpope/vim-unimpaired'
+    NeoBundle 'tpope/vim-vinegar'
+    NeoBundle 'ctrlpvim/ctrlp.vim'
 
 call neobundle#end()
 " =============== NeoBundle end ======================="
 
-let NERTTreeShowBokmarks=1 " 起動時にブックマークを表示
-autocmd VimEnter * NERDTree " Vim起動時にNERTreeを開く
-" NERDTreeのウィンドウしか開かれていないときは自動的に閉じる
-autocmd bufenter * if(winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+"let NERTTreeShowBokmarks=0 " 起動時にブックマークを表示
+" autocmd VimEnter * NERDTree " Vim起動時にNERTreeを開く
+" " NERDTreeのウィンドウしか開かれていないときは自動的に閉じる
+" autocmd bufenter * if(winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+let NERDTreeHijackNetrw=0
+
+
+
+" =============== "
+inoremap <silent> jj <ESC> " bind esc to jj
