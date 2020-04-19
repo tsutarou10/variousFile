@@ -6,3 +6,4 @@ set tabstop=4                   " タブをスペース4文字とカウント
 set shiftwidth=4                " 自動インデントに使われるスペースの数
 set backspace=2                 " 多くのターミナルでバックスペースの挙動を修正
 colorscheme murphy              " カラースキームを変更
+set directory=$HOME/.vim/swap// " swap fileの保存先を変更
