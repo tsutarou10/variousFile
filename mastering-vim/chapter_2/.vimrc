@@ -12,3 +12,14 @@ if !isdirectory(expand("$HOME/.vim/undodir"))
     call mkdir(expand("$HOME/.vimr/undodir"), "p")
 endif
 set undodir=$HOMe/.vim/undodir
+
+packloadall " すべてのプラグインをロードする
+silent! helptags ALL " すべてのプラグインようにヘルプふぁいるをロードする
+
+
+
+
+
+
+" =============== "
+inoremap <silent> jj <ESC> " bind esc to jj
