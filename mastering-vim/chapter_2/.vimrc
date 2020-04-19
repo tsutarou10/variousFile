@@ -18,6 +18,8 @@ noremap <c-j> <c-w><c-j> " window移動のマッピング
 noremap <c-k> <c-w><c-k> " window移動のマッピング
 noremap <c-l> <c-w><c-l> " window移動のマッピング
 
+set foldmethod=indent
+
 " ======= NeoBundle setting ========"
 " Note: Skip initialization for vim-tiny or vim-small.
 if 0 | endif
@@ -69,3 +71,9 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 call neobundle#end()
 " =============== NeoBundle end ======================="
+
+
+
+
+" =============== "
+inoremap <silent> jj <ESC> " bind esc to jj
