@@ -7,3 +7,8 @@ set shiftwidth=4                " 自動インデントに使われるスペー�
 set backspace=2                 " 多くのターミナルでバックスペースの挙動を修正
 colorscheme murphy              " カラースキームを変更
 set directory=$HOME/.vim/swap// " swap fileの保存先を変更
+set undofile                    " 永続undoが有効
+if !isdirectory(expand("$HOME/.vim/undodir"))
+    call mkdir(expand("$HOME/.vimr/undodir"), "p")
+endif
+set undodir=$HOMe/.vim/undodir
