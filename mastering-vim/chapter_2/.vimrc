@@ -13,7 +13,12 @@ if !isdirectory(expand("$HOME/.vim/undodir"))
 endif
 set undodir=$HOMe/.vim/undodir
 
-" =============== NeoBundle start ====================="
+noremap <c-h> <c-w><c-h> " window移動のマッピング
+noremap <c-j> <c-w><c-j> " window移動のマッピング
+noremap <c-k> <c-w><c-k> " window移動のマッピング
+noremap <c-l> <c-w><c-l> " window移動のマッピング
+
+" ======= NeoBundle setting ========"
 " Note: Skip initialization for vim-tiny or vim-small.
 if 0 | endif
 
@@ -35,6 +40,14 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " Refer to |:NeoBundle-examples|.
 " Note: You don't set neobundle setting in .gvimrc!
 
+call neobundle#end()
+
+" Required:
+filetype plugin indent on
+
+" If there are uninstalled bundles found on startup,
+" this will conveniently prompt you to install them.
+NeoBundleCheck
 
 if has('vim_starting')
     " 初回起動時のみruntimepathにNeoBundleのパスを指定する
@@ -50,22 +63,9 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 "インストールするVimプラグインを以下に記述
 " NeoBundle自身を管理
 NeoBundleFetch 'Shougo/neobundle.vim'
-" ======= NeoBundle list ======== "
+" =============== NeoBundle start ====================="
     NeoBundle 'scrooloose/nerdtree'
-" ======= NeoBundle end ======== "
+    NeoBundle 'tpope/vim-unimpaired'
 
 call neobundle#end()
-
-" Required:
-filetype plugin indent on
-
-" If there are uninstalled bundles found on startup,
-" this will conveniently prompt you to install them.
-NeoBundleCheck
 " =============== NeoBundle end ======================="
-
-
-
-
-" =============== "
-inoremap <silent> jj <ESC> " bind esc to jj
