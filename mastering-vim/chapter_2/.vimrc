@@ -19,6 +19,9 @@ noremap <c-k> <c-w><c-k> " window移動のマッピング
 noremap <c-l> <c-w><c-l> " window移動のマッピング
 
 set foldmethod=indent
+set wildmenu " Tabによる自動保管を有効にする
+set wildmode=list:longest,full " 最長マッチまで補完してから自動補完メニューを開く
+
 
 " ======= NeoBundle setting ========"
 " Note: Skip initialization for vim-tiny or vim-small.
@@ -72,8 +75,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 call neobundle#end()
 " =============== NeoBundle end ======================="
 
-
-
-
-" =============== "
-inoremap <silent> jj <ESC> " bind esc to jj
+let NERTTreeShowBokmarks=1 " 起動時にブックマークを表示
+autocmd VimEnter * NERDTree " Vim起動時にNERTreeを開く
+" NERDTreeのウィンドウしか開かれていないときは自動的に閉じる
+autocmd bufenter * if(winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
