@@ -13,10 +13,56 @@ if !isdirectory(expand("$HOME/.vim/undodir"))
 endif
 set undodir=$HOMe/.vim/undodir
 
-packloadall " すべてのプラグインをロードする
-silent! helptags ALL " すべてのプラグインようにヘルプふぁいるをロードする
+" =============== NeoBundle start ====================="
+" Note: Skip initialization for vim-tiny or vim-small.
+if 0 | endif
+
+if &compatible
+set nocompatible " Be iMproved
+endif
+
+" Required:
+set runtimepath+=~/.vim/bundle/neobundle.vim/
+
+" Required:
+call neobundle#begin(expand('~/.vim/bundle/'))
+
+" Let NeoBundle manage NeoBundle
+" Required:
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+" My Bundles here:
+" Refer to |:NeoBundle-examples|.
+" Note: You don't set neobundle setting in .gvimrc!
 
 
+if has('vim_starting')
+    " 初回起動時のみruntimepathにNeoBundleのパスを指定する
+    set runtimepath+=~/.vim/bundle/neobundle.vim/
+    "
+    " NeoBundleが未インストールであればgit cloneする・・・・・・①
+    if !isdirectory(expand("~/.vim/bundle/neobundle.vim/"))
+        echo "install NeoBundle..."
+        :call system("git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim")
+    endif
+endif
+call neobundle#begin(expand('~/.vim/bundle/'))
+"インストールするVimプラグインを以下に記述
+" NeoBundle自身を管理
+NeoBundleFetch 'Shougo/neobundle.vim'
+" ======= NeoBundle list ======== "
+    NeoBundle 'scrooloose/nerdtree'
+" ======= NeoBundle end ======== "
+
+call neobundle#end()
+
+" Required:
+filetype plugin indent on
+
+" If there are uninstalled bundles found on startup,
+" this will conveniently prompt you to install them.
+NeoBundleCheck
+" =============== NeoBundle end ======================="
 
 
 
