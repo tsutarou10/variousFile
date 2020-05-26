@@ -1,0 +1,69 @@
+
+
+times in msec
+ clock   self+sourced   self:  sourced script
+ clock   elapsed:              other lines
+
+000.006  000.006: --- VIM STARTING ---
+000.104  000.098: Allocated generic buffers
+007.391  007.287: locale set
+007.395  000.004: clipboard setup
+007.400  000.005: window checked
+013.402  006.002: inits 1
+013.415  000.013: parsing arguments
+013.416  000.001: expanding arguments
+016.008  002.592: shell init
+016.402  000.394: Termcap init
+016.417  000.015: inits 2
+016.549  000.132: init highlight
+018.037  000.832  000.832: sourcing /usr/local/share/vim/vim82/syntax/syncolor.vim
+018.186  001.097  000.265: sourcing /usr/local/share/vim/vim82/syntax/synload.vim
+025.316  007.017  007.017: sourcing /usr/local/share/vim/vim82/filetype.vim
+025.369  008.410  000.296: sourcing /usr/local/share/vim/vim82/syntax/syntax.vim
+025.499  000.017  000.017: sourcing /usr/local/share/vim/vim82/filetype.vim
+025.652  000.044  000.044: sourcing /usr/local/share/vim/vim82/ftplugin.vim
+025.910  000.069  000.069: sourcing /usr/local/share/vim/vim82/indent.vim
+026.697  000.211  000.211: sourcing /usr/local/share/vim/vim82/syntax/syncolor.vim
+027.629  000.226  000.226: sourcing /usr/local/share/vim/vim82/syntax/syncolor.vim
+028.100  000.285  000.285: sourcing /usr/local/share/vim/vim82/syntax/syncolor.vim
+028.323  002.078  001.356: sourcing /usr/local/share/vim/vim82/colors/murphy.vim
+030.321  001.790  001.790: sourcing /Users/tatsuro/.vim/autoload/plug.vim
+033.118  001.688  001.688: sourcing /usr/local/share/vim/vim82/ftoff.vim
+039.581  005.849  005.849: sourcing /usr/local/share/vim/vim82/filetype.vim
+039.736  000.013  000.013: sourcing /usr/local/share/vim/vim82/ftplugin.vim
+039.867  000.011  000.011: sourcing /usr/local/share/vim/vim82/indent.vim
+039.964  023.116  003.147: sourcing $HOME/.vimrc
+039.970  000.305: sourcing vimrc file(s)
+047.006  006.766  006.766: sourcing /Users/tatsuro/.vim/plugged/vim-unimpaired/plugin/unimpaired.vim
+047.445  000.280  000.280: sourcing /Users/tatsuro/.vim/plugged/vim-vinegar/plugin/vinegar.vim
+048.032  000.244  000.244: sourcing /Users/tatsuro/.vim/plugged/ctrlp.vim/autoload/ctrlp/mrufiles.vim
+048.192  000.611  000.367: sourcing /Users/tatsuro/.vim/plugged/ctrlp.vim/plugin/ctrlp.vim
+055.565  007.099  007.099: sourcing /Users/tatsuro/.vim/plugged/vim-easymotion/plugin/EasyMotion.vim
+056.414  000.061  000.061: sourcing /usr/local/share/vim/vim82/plugin/getscriptPlugin.vim
+056.757  000.276  000.276: sourcing /usr/local/share/vim/vim82/plugin/gzip.vim
+057.135  000.316  000.316: sourcing /usr/local/share/vim/vim82/plugin/logiPat.vim
+057.277  000.040  000.040: sourcing /usr/local/share/vim/vim82/plugin/manpager.vim
+057.541  000.196  000.196: sourcing /usr/local/share/vim/vim82/plugin/matchparen.vim
+058.205  000.592  000.592: sourcing /usr/local/share/vim/vim82/plugin/netrwPlugin.vim
+058.309  000.014  000.014: sourcing /usr/local/share/vim/vim82/plugin/rrhelper.vim
+058.405  000.026  000.026: sourcing /usr/local/share/vim/vim82/plugin/spellfile.vim
+058.615  000.138  000.138: sourcing /usr/local/share/vim/vim82/plugin/tarPlugin.vim
+058.791  000.100  000.100: sourcing /usr/local/share/vim/vim82/plugin/tohtml.vim
+059.008  000.144  000.144: sourcing /usr/local/share/vim/vim82/plugin/vimballPlugin.vim
+059.272  000.180  000.180: sourcing /usr/local/share/vim/vim82/plugin/zipPlugin.vim
+059.279  002.470: loading plugins
+059.373  000.094: loading packages
+059.535  000.004  000.004: sourcing /Users/tatsuro/.vim/after/plugin/common.vim
+059.539  000.162: loading after plugins
+059.548  000.009: inits 3
+059.898  000.350: reading viminfo
+059.925  000.027: setting raw mode
+059.947  000.022: start termcap
+059.961  000.014: clearing screen
+060.070  000.109: opening buffers
+060.097  000.027: BufEnter autocommands
+060.101  000.004: editing files in windows
+060.226  000.125: VimEnter autocommands
+060.228  000.002: before starting main loop
+066.307  006.079: first screen update
+066.311  000.004: --- VIM STARTED ---
