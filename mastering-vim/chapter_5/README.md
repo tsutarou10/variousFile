@@ -35,3 +35,14 @@ Plug 'tpope/vim-fugitive'
 
 #### Grebase
 - git rebase 
+
+
+### vimdiff
+| キー | 説明 |
+| ---- | ---- |
+| ]c | 前方の差分 |
+| [c | 後方の差分 |
+| do, :diffget | カーソル行に別ファイルの差分を移動 |
+| dp, :diffpush | カーソル行の差分を別ファイルにpush |
+
+- 3ファイル以上の場合 :diffget file_name で実行可能
