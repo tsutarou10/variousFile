@@ -27,7 +27,7 @@ Plug 'tpope/vim-fugitive'
 #### Ggrep
 - git grep
 
-#### Gmove
+#### Gmove destination/path
 - git move
 
 #### Gdelete
