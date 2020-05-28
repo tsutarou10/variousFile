@@ -54,6 +54,7 @@ Plug 'tpope/vim-fugitive'
 - 下: 変更結果 (MERGED)
 
 - 以下をMERGEDで行う
+
 | キー | 説明 |
 | ---- | ---- |
 | :diffget REMOTE | REMOTEの変更保持 |
