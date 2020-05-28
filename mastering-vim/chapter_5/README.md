@@ -46,3 +46,16 @@ Plug 'tpope/vim-fugitive'
 | dp, :diffpush | カーソル行の差分を別ファイルにpush |
 
 - 3ファイル以上の場合 :diffget file_name で実行可能
+
+### git mergetool
+- 左上: ローカルな変更 (LOCAL)
+- 中上: 枝分かれする直前 (BASE)
+- 右上: merge先の変更 (REMOTE)
+- 下: 変更結果 (MERGED)
+
+- 以下をMERGEDで行う
+| キー | 説明 |
+| ---- | ---- |
+| :diffget REMOTE | REMOTEの変更保持 |
+| :diffget BASE | BASEの変更保持 |
+| :diffget LOCAL | LOCALの変更保持 |
