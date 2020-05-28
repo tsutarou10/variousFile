@@ -10,7 +10,7 @@ from animals import sheep
 import animal
 import farm
 
-def build_animal(kind):
+def make_animal(kind):
     """Create an animal class."""
     if kind == 'cat':
         return cat.Cat()
